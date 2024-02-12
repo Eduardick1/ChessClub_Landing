@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap");
+
+@import "./reset";
+@import "./variables";
+@import "./Hero.section.scss";
+@import "./Second.section.scss";
+@import "./Info.section.scss";
+@import "./Stages.section.scss";
+@import "./Participators.section.scss";
+
+.container {
+  max-width: 1265px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+body,
+html {
+  font-family: "Merriweather", serif;
+  overflow-x: hidden;
+}
+
+h3 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: normal;
+  text-transform: uppercase;
+  color: $textColor;
+  span {
+    color: $activeColorRed;
+    font-weight: bold;
+  }
+}
+h2 {
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: normal;
+  text-transform: uppercase;
+  color: $textColor;
+}
+
+header {
+  background-image: url("../Assets/paperBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 700px;
+  padding-top: 26px;
+  position: relative;
+  .header__image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+      width: calc((1vw + 1vh) * 72);
+      max-width: 1600px;
+      height: 700px;
+    }
+    @media (max-width: 800px) {
+      height: 380px;
+      right: 0;
+      left: auto;
+      transform: translateX(0);
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  &_title {
+    color: #595653;
+    font-weight: bold;
+    font-family: "Golos Text", sans-serif;
+  }
+}
+
+footer {
+  min-height: 150px;
+  padding: 40px 0 60px;
+  color: #4f4d4b;
+  background-color: $layoutBgColor;
+  font-family: "Golos Text", sans-serif;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker {
+  width: 100%;
+  background-color: $activeColorRed;
+  display: flex;
+  overflow: hidden;
+  &:hover ul {
+    animation-play-state: paused;
+  }
+  ul {
+    display: flex;
+    color: #fff;
+    list-style: disc;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+    will-change: auto;
+    li {
+      padding: 10px 0;
+      margin: 0 12px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.controls {
+  align-items: center;
+  gap: 14px;
+  font-family: "Golos Text", sans-serif;
+
+  button {
+    display: grid;
+    place-content: center center;
+    background-color: $textColor;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    transition: background-color 150ms ease;
+    &:hover {
+      background: $activeColorYellow;
+    }
+    &:disabled {
+      background-color: $disabledColor;
+    }
+    svg path {
+      stroke: #fff;
+    }
+  }
+  .amount {
+    flex-shrink: 0;
+    width: fit-content !important;
+  }
+}
+
+*,
+html,
+body {
+  scroll-behavior: smooth;
+}

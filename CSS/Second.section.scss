@@ -1,0 +1,21 @@
+@import "./variables";
+
+.lection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 17px;
+  margin-top: 80px;
+  &_title {
+    max-width: 764px;
+  }
+  @media (max-width: 800px) {
+    flex-direction: column;
+    &__image {
+      svg {
+        max-width: 335px !important;
+        height: inherit;
+      }
+    }
+  }
+}
