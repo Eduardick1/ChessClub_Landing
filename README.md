@@ -17,3 +17,6 @@ Adaptive landing page.
 
 ## Check screenshots in `PREVIEW` folder...
 
+![Desktop](./PREVIEW/Desktop.png)
+![Mobile](./PREVIEW/Mobile.png)
+![Tablet](./PREVIEW/Tablet.png)
