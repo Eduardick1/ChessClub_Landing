@@ -1,54 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="./assets/img/fav/android-chrome-512x512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/img/fav/android-chrome-192x192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/img/fav/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/img/fav/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/img/fav/favicon-16x16.png"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/fav/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="manifest" href="./assets/img/fav/site.webmanifest" />
+    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="./CSS/style.css" />
-    <title>Chess Club</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Клуб четырех коней</title>
   </head>
   <body>
-    <header>
-      <div class="header__image">
-        <img src="./Assets/newHeroBg.png" alt="" />
-      </div>
-      <div class="container">
-        <div class="header__logo">
-          <span class="header__logo_img"
-            ><img src="./Assets/logoLogo.png" alt="" /></span
-          ><span class="header__logo_title">Клуб<br />четырех коней</span>
+    <div
+      id="preloader"
+      style="
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #e9ded4;
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+      "
+    >
+      <svg style="display: none">
+        <symbol
+          id="horse-icon"
+          viewBox="0 0 19 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.1489 25.5086H17.6615C17.6615 25.5035 17.6591 25.4984 17.6581 25.4936L17.6447 25.4347C17.6362 25.396 17.627 25.3576 17.6174 25.3195C17.6133 25.3015 17.6089 25.2836 17.6044 25.2657C17.5918 25.2155 17.5784 25.1652 17.5648 25.115L17.5607 25.1006C17.5456 25.0462 17.5299 24.992 17.5135 24.938L17.4971 24.8858C17.4858 24.8487 17.4738 24.8119 17.4629 24.7751C17.4564 24.7549 17.4496 24.7351 17.4431 24.7152C17.4311 24.6797 17.4188 24.6442 17.4062 24.609C17.3997 24.5904 17.3928 24.5715 17.3863 24.5533C17.3704 24.5091 17.354 24.4653 17.3371 24.4218C17.3334 24.4125 17.3303 24.4035 17.3265 24.3942C17.3067 24.343 17.2859 24.2921 17.2647 24.2413C17.2571 24.2227 17.2493 24.2044 17.2414 24.1862C17.2271 24.1542 17.2127 24.119 17.198 24.0857L17.1703 24.0239C17.156 23.9919 17.1413 23.9599 17.1262 23.9279C17.117 23.9081 17.1074 23.8879 17.0979 23.8681C17.0804 23.8313 17.0637 23.7948 17.0442 23.7586C17.037 23.7449 17.0305 23.7308 17.0234 23.7167C16.9991 23.669 16.9741 23.6207 16.9488 23.5746L16.9147 23.5148L16.8665 23.428L16.8289 23.364C16.8132 23.3371 16.7974 23.3103 16.7814 23.2834C16.7687 23.2616 16.7557 23.2398 16.7427 23.2194C16.725 23.1902 16.7086 23.1618 16.6891 23.133L16.6399 23.0549C16.6166 23.019 16.5934 22.9829 16.5695 22.9473C16.5544 22.9249 16.5394 22.9028 16.524 22.8808C16.5086 22.8587 16.4919 22.8334 16.4755 22.81C16.4591 22.7867 16.4413 22.7633 16.4262 22.7403C16.4112 22.7172 16.3948 22.6964 16.3787 22.6763C16.3627 22.6561 16.3446 22.6292 16.3271 22.6059L16.2789 22.5418C16.2447 22.4993 16.2133 22.4567 16.1798 22.4138L16.133 22.3553C16.1132 22.3306 16.0926 22.3063 16.0725 22.282L16.0274 22.2282C16.0065 22.2036 15.9853 22.1792 15.9641 22.1546L15.9197 22.104L15.8534 22.0298L15.8141 21.9869C15.7324 21.8982 15.6487 21.8109 15.5629 21.7257L15.5253 21.6883L15.4467 21.6124L15.408 21.576C15.3807 21.55 15.3533 21.5244 15.3257 21.4992L15.2973 21.4735C15.2006 21.3855 15.1011 21.2998 14.9999 21.2175L14.9722 21.1948C14.941 21.1692 14.9096 21.1439 14.8779 21.1189L14.8465 21.094C14.8123 21.0684 14.7812 21.0431 14.748 21.0178L14.7313 21.0053C14.6195 20.9208 14.505 20.8386 14.3895 20.7595L14.3734 20.7483C14.3368 20.7237 14.3003 20.6994 14.2634 20.6754L14.2391 20.6597C14.2015 20.635 14.1636 20.611 14.1256 20.587L14.1191 20.5832C13.9933 20.5045 13.8652 20.429 13.7346 20.3569L13.7295 20.3537C13.6881 20.331 13.6468 20.3089 13.6054 20.2868L13.5873 20.2772C13.3672 20.161 13.1411 20.0543 12.9092 19.9572L12.8948 19.9511C12.8336 19.9255 12.7721 19.9009 12.7099 19.8766H13.9332C14.1325 19.8766 14.2941 19.6618 14.2941 19.3965C14.2941 19.1312 14.1325 18.9164 13.9332 18.9164H13.5688C13.5914 18.8627 13.6163 18.8019 13.6433 18.7334C13.9879 18.5324 14.5942 18.1042 15.1958 17.3175L15.2006 17.3114C15.2461 17.2525 15.2909 17.1916 15.3349 17.1287L15.3438 17.1162C15.3875 17.0544 15.4313 16.9908 15.4743 16.9242L15.486 16.9066C15.5065 16.8746 15.527 16.8426 15.5475 16.8106C15.5475 16.8106 15.5475 16.808 15.5499 16.8064C15.5711 16.7744 15.5919 16.7392 15.6128 16.705L15.6261 16.6829C15.6439 16.6534 15.662 16.6233 15.6794 16.5929C15.6828 16.5875 15.6863 16.5821 15.6893 16.5763C15.7095 16.5417 15.7297 16.5065 15.7495 16.471L15.7632 16.4464C15.7796 16.4169 15.7956 16.3872 15.8117 16.3571C15.8165 16.3488 15.8213 16.3401 15.8257 16.3315C15.8448 16.2953 15.864 16.2588 15.8831 16.2217L15.8965 16.1958C15.9115 16.1657 15.9269 16.135 15.9419 16.1042L15.9583 16.0722C15.9768 16.0345 15.9949 15.9961 16.013 15.9573L16.0243 15.9327C16.0393 15.9007 16.054 15.8687 16.0687 15.8367L16.0862 15.7983C16.1032 15.7596 16.1203 15.7205 16.1367 15.6811C16.1398 15.6741 16.1429 15.6667 16.1456 15.6597C16.161 15.6235 16.176 15.5867 16.1911 15.5496L16.2082 15.5074C16.2222 15.4722 16.2362 15.4366 16.2499 15.4011L16.2601 15.3742C16.2762 15.332 16.2919 15.2888 16.3076 15.2462L16.324 15.2008C16.3364 15.1668 16.3483 15.1323 16.3603 15.0977C16.3647 15.0849 16.3692 15.0721 16.3733 15.0593C16.3883 15.0151 16.4033 14.97 16.418 14.9249C16.4228 14.9092 16.428 14.8929 16.4327 14.8782L16.4669 14.7729C16.4714 14.7575 16.4761 14.7409 16.4806 14.7271C16.4946 14.6807 16.5086 14.6333 16.5219 14.5856C16.5264 14.5706 16.5305 14.5552 16.5346 14.5399C16.5448 14.5031 16.5551 14.4663 16.565 14.4288C16.5695 14.4119 16.5739 14.3949 16.5787 14.3779C16.5913 14.3287 16.604 14.2791 16.6163 14.2288L16.6265 14.1869C16.6361 14.1469 16.6457 14.1066 16.6549 14.0659L16.6672 14.0115C16.6788 13.9593 16.6904 13.9072 16.7014 13.854C16.7038 13.8438 16.7058 13.8332 16.7079 13.822C16.7175 13.7763 16.7267 13.7299 16.7356 13.6835C16.7393 13.6646 16.7427 13.6457 16.7465 13.6268C16.7554 13.5791 16.7639 13.5308 16.7725 13.4831C16.7742 13.4729 16.7762 13.463 16.7779 13.453C16.7875 13.3967 16.7969 13.3399 16.806 13.2828C16.8091 13.2636 16.8121 13.2444 16.8149 13.2248C16.822 13.1784 16.8289 13.1317 16.8357 13.0843L16.8419 13.0408C16.8501 12.9819 16.8579 12.9227 16.8654 12.8626C16.8678 12.8437 16.8699 12.8248 16.8723 12.8056C16.8782 12.7578 16.8837 12.7098 16.8887 12.6616C16.8907 12.6443 16.8928 12.6273 16.8945 12.61C16.9011 12.5482 16.9073 12.4858 16.913 12.4228C16.913 12.4052 16.916 12.3876 16.9174 12.3697C16.9218 12.3191 16.9263 12.2682 16.93 12.217C16.93 12.1982 16.9331 12.1793 16.9345 12.1604C16.9393 12.0951 16.9437 12.0294 16.9478 11.9632C16.9478 11.9482 16.9478 11.9312 16.9502 11.9178C16.9533 11.8628 16.9564 11.8074 16.9588 11.7517C16.9588 11.7315 16.9588 11.7114 16.9615 11.6912C16.9642 11.6224 16.967 11.5533 16.969 11.4832C16.969 11.4736 16.969 11.4637 16.969 11.4537C16.9708 11.3914 16.9722 11.3285 16.9731 11.2649C16.9731 11.2441 16.9731 11.2233 16.9731 11.2025C16.9731 11.1342 16.9731 11.0655 16.9731 10.9964V10.9804C16.9731 10.9068 16.9731 10.8322 16.9731 10.7564V10.6924C16.9731 10.6284 16.9704 10.5612 16.9687 10.4946V10.4584C16.9663 10.3816 16.9632 10.3038 16.9601 10.2257C16.9601 10.2056 16.9581 10.1851 16.9574 10.1649C16.9544 10.0992 16.951 10.0331 16.9471 9.96652C16.9471 9.9502 16.9471 9.93451 16.9444 9.91691C16.9396 9.8369 16.9344 9.75625 16.9287 9.67496L16.9246 9.61831C16.9195 9.55047 16.9143 9.4823 16.9085 9.41349C16.9085 9.39364 16.9054 9.3738 16.9037 9.35396C16.8966 9.27075 16.8887 9.18658 16.8805 9.10209C16.8805 9.08609 16.8771 9.07009 16.8757 9.05376C16.8685 8.98175 16.8607 8.90911 16.8528 8.83582C16.8504 8.81374 16.848 8.79197 16.8453 8.76989C16.8357 8.68284 16.8255 8.59547 16.8145 8.50682C16.8145 8.49594 16.8114 8.48505 16.8101 8.47481C16.8003 8.39544 16.7899 8.31565 16.779 8.23542C16.7756 8.21174 16.7725 8.18806 16.7691 8.16438C16.7563 8.07348 16.7432 7.98184 16.7298 7.88946C15.3626 -1.22335 5.67405 0.255549 5.67405 0.255549L5.9844 2.21355L0.125 8.00947L0.381004 10.2475L2.60063 11.5277C2.69957 11.2922 2.82661 11.0679 2.97933 10.8591C4.41145 9.31236 7.18991 8.09813 7.98526 7.84625C8.14454 7.79601 8.23512 7.77073 8.23512 7.77073C4.4306 12.3812 4.86331 17.6632 5.03284 18.9222C4.85647 18.9542 4.7201 19.1536 4.7201 19.3968C4.7201 19.6618 4.88176 19.8769 5.08103 19.8769H6.30432C4.26983 20.6743 2.6549 22.193 1.8121 24.1014C1.81111 24.104 1.80997 24.1066 1.80868 24.1091C1.74648 24.2507 1.6886 24.3944 1.63505 24.5402V24.5446C1.6207 24.5843 1.60668 24.624 1.59301 24.664C1.58789 24.6784 1.58276 24.6928 1.57797 24.7075C1.56567 24.7434 1.55427 24.7796 1.54379 24.816C1.53764 24.8346 1.53183 24.8535 1.52602 24.872C1.51508 24.9063 1.50449 24.9409 1.49423 24.9754L1.47578 25.0394C1.46621 25.0714 1.45664 25.1057 1.44775 25.139C1.44126 25.1626 1.4351 25.186 1.42895 25.2097C1.42075 25.2417 1.4122 25.2737 1.40434 25.3057C1.39648 25.3377 1.38896 25.3697 1.38144 25.4036C1.37392 25.4376 1.36435 25.4772 1.35615 25.5144H0.868405C0.774613 25.5124 0.681355 25.5281 0.594101 25.5603C0.506846 25.5926 0.427356 25.6409 0.360293 25.7023C0.29323 25.7637 0.239942 25.8371 0.203565 25.918C0.167187 25.999 0.148448 26.086 0.148448 26.1738C0.148448 26.2617 0.167187 26.3486 0.203565 26.4296C0.239942 26.5106 0.29323 26.5839 0.360293 26.6453C0.427356 26.7068 0.506846 26.755 0.594101 26.7873C0.681355 26.8196 0.774613 26.8352 0.868405 26.8333H18.155C18.2488 26.8352 18.3421 26.8196 18.4293 26.7873C18.5166 26.755 18.5961 26.7068 18.6632 26.6453C18.7302 26.5839 18.7835 26.5106 18.8199 26.4296C18.8563 26.3486 18.875 26.2617 18.875 26.1738C18.875 26.086 18.8563 25.999 18.8199 25.918C18.7835 25.8371 18.7302 25.7637 18.6632 25.7023C18.5961 25.6409 18.5166 25.5926 18.4293 25.5603C18.3421 25.5281 18.2488 25.5124 18.155 25.5144L18.1489 25.5086Z"
+            fill="currentColor"
+          />
+        </symbol>
+      </svg>
+      <div
+        class="loader"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <div class="loader--item loader-1">
+          <svg>
+            <use href="#horse-icon"></use>
+          </svg>
         </div>
+        <div class="loader--item loader-2">
+          <svg>
+            <use href="#horse-icon"></use>
+          </svg>
+        </div>
+        <div class="loader--item loader-3">
+          <svg>
+            <use href="#horse-icon"></use>
+          </svg>
+        </div>
+        <div class="loader--item loader-4">
+          <svg>
+            <use href="#horse-icon"></use>
+          </svg>
+        </div>
+      </div>
+      <style>
+        .loader--item {
+          width: 40px;
+          height: 50px;
+          position: relative;
+          color: #595653;
+          -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+          -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+          -webkit-animation-timing-function: cubic-bezier(1, 0, 1, 0.2);
+          animation-timing-function: cubic-bezier(1, 0, 1, 0.2);
+        }
+        .loader--item svg {
+          object-fit: contain;
+          object-position: center;
+          height: 100%;
+          width: 100%;
+        }
+        .loader--item.loader-1 {
+          z-index: 1;
+          -webkit-animation-name: loader-1;
+          animation-name: loader-1;
+        }
+        .loader--item.loader-2 {
+          z-index: 2;
+          -webkit-animation-name: loader-2;
+          animation-name: loader-2;
+        }
+        .loader--item.loader-3 {
+          z-index: 2;
+          -webkit-animation-name: loader-3;
+          animation-name: loader-3;
+        }
+        .loader--item.loader-4 {
+          z-index: 1;
+          -webkit-animation-name: loader-4;
+          animation-name: loader-4;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .loader--item {
+            -webkit-animation: none !important;
+            animation: none !important;
+          }
+        }
+        #preloader.loaded .loader--item {
+          -webkit-animation: none !important;
+          animation: none !important;
+        }
+        #preloader.loaded {
+          opacity: 0;
+        }
+        @keyframes loader-1 {
+          0%,
+          100% {
+            -webkit-transform: translate3d(0px, 0, 0);
+            transform: translate3d(0px, 0, 0);
+          }
+
+          25%,
+          75% {
+            -webkit-transform: translate3d(40px, 0, 0);
+            transform: translate3d(40px, 0, 0);
+          }
+          50% {
+            -webkit-transform: translate3d(60px, 0, 0);
+            transform: translate3d(60px, 0, 0);
+          }
+        }
+        @keyframes loader-2 {
+          0%,
+          75% {
+            -webkit-transform: translate3d(0px, 0, 0);
+            transform: translate3d(0px, 0, 0);
+          }
+          50% {
+            -webkit-transform: translate3d(20px, 0, 0);
+            transform: translate3d(20px, 0, 0);
+          }
+        }
+        @keyframes loader-3 {
+          0%,
+          75% {
+            -webkit-transform: translate3d(0px, 0, 0);
+            transform: translate3d(0px, 0, 0);
+          }
+          50% {
+            -webkit-transform: translate3d(-20px, 0, 0);
+            transform: translate3d(-20px, 0, 0);
+          }
+        }
+
+        @keyframes loader-4 {
+          0%,
+          100% {
+            -webkit-transform: translate3d(0px, 0, 0);
+            transform: translate3d(0px, 0, 0);
+          }
+
+          25%,
+          75% {
+            -webkit-transform: translate3d(-40px, 0, 0);
+            transform: translate3d(-40px, 0, 0);
+          }
+          50% {
+            -webkit-transform: translate3d(-60px, 0, 0);
+            transform: translate3d(-60px, 0, 0);
+          }
+        }
+      </style>
+      <noscript
+        ><p>
+          Для корректного функционирования данного сайта необходимо активировать
+          поддержку JavaScript в настройках Вашего браузера или воспользоваться
+          альтернативным браузером с включенной поддержкой скриптов.
+        </p></noscript
+      >
+    </div>
+
+    <div
+      class="hero__images"
+      style="
+        background-image: url('./assets/img/heroImg.webp'),
+          url('./assets/img/paperBg.webp');
+      "
+    >
+      <div class="container">
+        <header class="header__main">
+          <a href="/">
+            <span class="header__logo"
+              ><img src="./assets/img/Logo.webp" alt=""
+            /></span>
+            <p class="header__title">
+              Клуб<br />
+              четырех коней
+            </p></a
+          >
+        </header>
         <section class="hero">
-          <h1 class="hero_title">
+          <h1 class="hero__title">
             Превратите уездный город <span>в столицу земного шара</span>
           </h1>
-          <p class="hero_text">
+          <p class="hero__text">
             Оплатите взнос на телеграммы для организации Международного
             васюкинского турнира по шахматам
           </p>
           <div class="hero__buttons">
-            <a href="#support" class="hero__buttons_support">
+            <a href="#support" class="hero__button hero__button--support">
               Поддержать шахматную мысль
             </a>
 
-            <a href="#details" class="hero__buttons_details"
-              >Подробнее о турнире
+            <a href="#details" class="hero__button hero__button--details"
+              >Подробнее о&nbsp;турнире
             </a>
           </div>
         </section>
       </div>
-    </header>
+    </div>
     <main>
       <div class="ticker">
-        <ul>
-          <li>Дело помощи утопающим — дело рук самих утопающих!</li>
-          <li>Шахматы двигают вперед не только культуру, но и экономику!</li>
-          <li>Лед тронулся, господа присяжные заседатели!</li>
-        </ul>
-        <ul>
+        <ul class="ticker__list">
           <li>Дело помощи утопающим — дело рук самих утопающих!</li>
           <li>Шахматы двигают вперед не только культуру, но и экономику!</li>
           <li>Лед тронулся, господа присяжные заседатели!</li>
@@ -56,15 +272,22 @@
       </div>
       <div class="container">
         <section class="lection">
-          <h3 class="lection_title">
-            Чтобы поддержать Международный васюкинский турнир посетите лекцию на
-            тему:<br /><span>«Плодотворная дебютная идея»</span>
-          </h3>
+          <div class="lection__title_wrapper">
+            <h3 class="lection__title">
+              Чтобы поддержать Международный васюкинский турнир
+            </h3>
+            <h3 class="lection__title">
+              посетите лекцию на&nbsp;тему:<br /><span class="highlighted"
+                >«Плодотворная дебютная идея»</span
+              >
+            </h3>
+          </div>
           <div class="lection__image">
             <svg width="394" height="250">
               <pattern id="pattern" width="100%" height="100%">
                 <image
-                  xlink:href="./Assets/many_chees_players_tournament_old_black_and_white_photo_seed-0ts-1705919932_idx-0 1.png"
+                  xlink:href="./assets/img/ChessTournament.webp"
+                  href="./assets/img/ChessTournament.webp"
                   width="100%"
                   height="100%"
                   preserveAspectRatio="xMidYMin slice"
@@ -83,12 +306,14 @@
         </section>
         <section class="info">
           <div class="info_image">
-            <img src="./Assets/ChessPlayer.png" alt="" />
+            <img src="./assets/img/ChessPlayerArt.webp" alt="" />
           </div>
           <div class="info__details" id="details">
             <h3 class="info__details_title">
               и Сеанс
-              <span>одновременной игры в шахматы на 160 досках</span>
+              <span class="highlighted"
+                >одновременной игры в шахматы на 160 досках</span
+              >
               гроссмейстера О. Бендера
             </h3>
             <dl class="info__details__table">
@@ -100,28 +325,31 @@
                 <dt>Дата и время мероприятия:</dt>
                 <dd>
                   <time datetime="1927-06-22 18:00"
-                    >22 июня 1927 г. в 18:00</time
+                    >22&nbsp;июня 1927&nbsp;г. в&nbsp;18:00</time
                   >
                 </dd>
               </div>
               <div class="info__details__table_field">
                 <dt>Стоимость входных билетов:</dt>
-                <dd>20 коп.</dd>
+                <dd>20&nbsp;коп.</dd>
               </div>
               <div class="info__details__table_field">
-                <dt>Плата за игру:</dt>
-                <dd>50 коп.</dd>
+                <dt>Плата за&nbsp;игру:</dt>
+                <dd>50&nbsp;коп.</dd>
               </div>
               <div class="info__details__table_field">
                 <dt>Взнос на телеграммы:</dt>
                 <dd>
-                  <del>100 руб.</del
-                  ><ins style="text-decoration: none">21 руб. 16 коп.</ins>
+                  <del>100&nbsp;руб.</del
+                  ><ins style="text-decoration: none"
+                    >21&nbsp;руб.&nbsp;16&nbsp;коп.</ins
+                  >
                 </dd>
               </div>
             </dl>
             <a href="#" target="_blank" class="info__details_link"
-              >По всем вопросам обращаться в администрацию к К. Михельсону</a
+              >По всем вопросам обращаться в администрацию к
+              К.&nbsp;Михельсону</a
             >
           </div>
         </section>
@@ -129,7 +357,7 @@
           <div class="stages__text">
             <h2 class="stages__text_title">
               Этапы преображения
-              <div class="stages__text_title-innerBlock">
+              <div class="stages__text_title--innerBlock">
                 Васюков
                 <p class="stages__text_title_subtitle">
                   Будущие источники обогащения васюкинцев
@@ -139,86 +367,78 @@
           </div>
           <div id="stagesContainerSwiper" class="">
             <div class="swiper-wrapper stages__blocks">
-              <div class="stages__blocks_item">
-                <p>Строительство железнодорожной магистрали Москва-Васюки</p>
+              <div class="swiper-slide">
+                <div class="stages__blocks_item stage-block--1">
+                  <p>Строительство железнодорожной магистрали Москва-Васюки</p>
+                </div>
+                <div class="stages__blocks_item stage-block--2">
+                  <p>
+                    Открытие фешенебельной гостиницы «Проходная пешка» и других
+                    небоскрёбов
+                  </p>
+                </div>
               </div>
-              <div class="stages__blocks_item">
-                <p>
-                  Открытие фешенебельной гостиницы «Проходная пешка» и других
-                  небоскрёбов
-                </p>
+              <div class="swiper-slide">
+                <div class="stages__blocks_item stage-block--3">
+                  <p>
+                    Поднятие сельского хозяйства в радиусе на тысячу километров:
+                    производство овощей, фруктов, икры, шоколадных конфет
+                  </p>
+                </div>
               </div>
-              <div class="stages__blocks_item">
-                <p>
-                  Поднятие сельского хозяйства в радиусе на тысячу километров:
-                  производство овощей, фруктов, икры, шоколадных конфет
-                </p>
+              <div class="swiper-slide">
+                <div class="stages__blocks_item stage-block--4">
+                  <p>Строительство дворца для турнира</p>
+                </div>
+                <div class="stages__blocks_item stage-block--5">
+                  <p>Размещение гаражей для гостевого автотранспорта</p>
+                </div>
               </div>
-              <div class="stages__blocks_item">
-                <p>Строительство дворца для турнира</p>
+              <div class="swiper-slide">
+                <div class="stages__blocks_item stage-block--6">
+                  <p>
+                    Постройка сверхмощной радиостанции для передачи всему миру
+                    сенсационных результатов
+                  </p>
+                </div>
               </div>
-              <div class="stages__blocks_item">
-                <p>Размещение гаражей для гостевого автотранспорта</p>
-              </div>
-              <div class="stages__blocks_item">
-                <p>
-                  Постройка сверхмощной радиостанции для передачи всему миру
-                  сенсационных результатов
-                </p>
-              </div>
-              <div class="stages__blocks_item">
-                <p>
-                  Создание аэропорта «Большие Васюки» с&nbspрегулярным
-                  отправлением почтовых самолётов и дирижаблей во все концы
-                  света, включая Лос-Анжелос и Мельбурн
-                </p>
+              <div class="swiper-slide">
+                <div class="stages__blocks_item stage-block--7">
+                  <p>
+                    Создание аэропорта «Большие Васюки» с&nbsp;регулярным
+                    отправлением почтовых самолётов и дирижаблей во все концы
+                    света, включая Лос-Анжелос и Мельбурн
+                  </p>
+                </div>
               </div>
             </div>
             <div class="controls stageSwiper__controls">
-              <button class="stageSwiper-button-prev">
-                <svg
-                  width="12"
-                  height="20"
-                  viewBox="0 0 12 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                >
-                  <path
-                    d="M10.5382 18.4614L2.07666 9.99989L10.5382 1.53835"
-                    stroke-width="2"
-                    stroke-linecap="square"
-                  />
-                </svg>
-              </button>
+              <button class="stageSwiper-button-prev"></button>
               <span
                 id="amountStages"
                 class="stageSwiper-pagination amount"
               ></span>
-              <button class="stageSwiper-button-next">
-                <svg
-                  width="12"
-                  height="20"
-                  viewBox="0 0 12 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                >
-                  <path
-                    d="M1.4618 1.53845L9.92334 9.99999L1.4618 18.4615"
-                    stroke-width="2"
-                    stroke-linecap="square"
-                  />
-                </svg>
-              </button>
+              <button class="stageSwiper-button-next"></button>
             </div>
           </div>
         </section>
         <section class="partisipators" id="support">
-          <h2 class="partisipators_title">Участники турнира</h2>
+          <div class="partisipators__header">
+            <h2 class="partisipators__title">Участники турнира</h2>
+            <div class="partisipators__carousel__controls controls">
+              <button class="partiSwiper-prev-btn"></button
+              ><span id="amountParti" class="amount partiSwiper"></span
+              ><button class="partiSwiper-next-btn"></button>
+            </div>
+          </div>
           <div class="partisipators__carousel">
             <div class="partisipators__carousel__inner swiper-wrapper">
               <div class="partisipators__carousel__card swiper-slide">
                 <div class="partisipators__carousel__card_image">
-                  <img src="./Assets/Parti.png" alt="Mock photo participator" />
+                  <img
+                    src="./assets/img/person.webp"
+                    alt="Mock photo participator"
+                  />
                 </div>
                 <h4 class="partisipators__carousel__card_name">
                   Хозе-Рауль Капабланка
@@ -232,7 +452,10 @@
               </div>
               <div class="partisipators__carousel__card swiper-slide">
                 <div class="partisipators__carousel__card_image">
-                  <img src="./Assets/Parti.png" alt="Mock photo participator" />
+                  <img
+                    src="./assets/img/person.webp"
+                    alt="Mock photo participator"
+                  />
                 </div>
                 <h4 class="partisipators__carousel__card_name">Рихард Рети</h4>
                 <p class="partisipators__carousel__card_desc">
@@ -244,7 +467,10 @@
               </div>
               <div class="partisipators__carousel__card swiper-slide">
                 <div class="partisipators__carousel__card_image">
-                  <img src="./Assets/Parti.png" alt="Mock photo participator" />
+                  <img
+                    src="./assets/img/person.webp"
+                    alt="Mock photo participator"
+                  />
                 </div>
                 <h4 class="partisipators__carousel__card_name">
                   Арон Нимцович
@@ -258,7 +484,10 @@
               </div>
               <div class="partisipators__carousel__card swiper-slide">
                 <div class="partisipators__carousel__card_image">
-                  <img src="./Assets/Parti.png" alt="Mock photo participator" />
+                  <img
+                    src="./assets/img/person.webp"
+                    alt="Mock photo participator"
+                  />
                 </div>
                 <h4 class="partisipators__carousel__card_name">
                   Эммануил Ласкер
@@ -272,7 +501,10 @@
               </div>
               <div class="partisipators__carousel__card swiper-slide">
                 <div class="partisipators__carousel__card_image">
-                  <img src="./Assets/Parti.png" alt="Mock photo participator" />
+                  <img
+                    src="./assets/img/person.webp"
+                    alt="Mock photo participator"
+                  />
                 </div>
                 <h4 class="partisipators__carousel__card_name">
                   Александр Алехин
@@ -286,7 +518,10 @@
               </div>
               <div class="partisipators__carousel__card swiper-slide">
                 <div class="partisipators__carousel__card_image">
-                  <img src="./Assets/Parti.png" alt="Mock photo participator" />
+                  <img
+                    src="./assets/img/person.webp"
+                    alt="Mock photo participator"
+                  />
                 </div>
                 <h4 class="partisipators__carousel__card_name">Остап Бендер</h4>
                 <p class="partisipators__carousel__card_desc">Гроссмейстер</p>
@@ -296,47 +531,10 @@
               </div>
             </div>
           </div>
-          <div class="partisipators__carousel__controls controls">
-            <button class="partiSwiper-prev-btn">
-              <svg
-                width="12"
-                height="20"
-                viewBox="0 0 12 20"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-              >
-                <path
-                  d="M10.5382 18.4614L2.07666 9.99989L10.5382 1.53835"
-                  stroke-width="2"
-                  stroke-linecap="square"
-                />
-              </svg></button
-            ><span id="amountParti" class="amount partiSwiper"></span
-            ><button class="partiSwiper-next-btn">
-              <svg
-                width="12"
-                height="20"
-                viewBox="0 0 12 20"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-              >
-                <path
-                  d="M1.4618 1.53845L9.92334 9.99999L1.4618 18.4615"
-                  stroke-width="2"
-                  stroke-linecap="square"
-                />
-              </svg>
-            </button>
-          </div>
         </section>
       </div>
       <div class="ticker">
-        <ul>
-          <li>Дело помощи утопающим — дело рук самих утопающих!</li>
-          <li>Шахматы двигают вперед не только культуру, но и экономику!</li>
-          <li>Лед тронулся, господа присяжные заседатели!</li>
-        </ul>
-        <ul>
+        <ul class="ticker__list">
           <li>Дело помощи утопающим — дело рук самих утопающих!</li>
           <li>Шахматы двигают вперед не только культуру, но и экономику!</li>
           <li>Лед тронулся, господа присяжные заседатели!</li>
@@ -353,6 +551,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
